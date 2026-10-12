@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #FAF9F5; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #0B7A48; text-decoration: none; }
+  a:hover { color: #064F2F; }
+</style>
+</helmet>
+<div style="font-family: 'Schibsted Grotesk', system-ui, sans-serif; color: #101A14; background: #FAF9F5; overflow-x: hidden">
+
+  <header style="position: sticky; top: 0; z-index: 40; background: rgba(250,249,245,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px">
+      <a href="Home Light Clients.dc.html" style="display: flex; align-items: center; gap: 10px; color: #101A14">
+        <svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="#0B7A48" stroke-width="2.6"></circle><path d="M22 2a8 8 0 100 16" stroke="#22B26E" stroke-width="2.6" stroke-linecap="round"></path></svg>
+        <span style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em">Green Card Guide</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 22px; flex: 1; flex-wrap: wrap; font-size: 14.5px; color: #46564D">
+        <a href="#business" style="color: #46564D">For Businesses</a>
+        <a href="#individuals" style="color: #101A14; font-weight: 600">For Individuals</a>
+        <a href="#frank" style="display: flex; align-items: center; gap: 7px; color: #0B7A48; font-weight: 600"><span style="width: 6px; height: 6px; border-radius: 99px; background: #22B26E"></span>Frank</a>
+        <a href="#lawyers" style="color: #46564D">Our Attorneys <span style="color: #22B26E">*</span></a>
+        <a href="#pricing" style="color: #46564D">Pricing</a>
+        <a href="#resources" style="color: #46564D">Resources</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px">
+        <div style="position: relative">
+          <button onClick="{{ toggleLang }}" aria-haspopup="listbox" aria-expanded="{{ langOpen }}" aria-label="Change language" style="display: flex; align-items: center; gap: 7px; height: 38px; padding: 0 12px; border-radius: 99px; border: 1px solid #D9D6CC; background: #FFFFFF; color: #101A14; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer" style-hover="border-color: #A8E3C4">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#0B7A48" stroke-width="1.4"></circle><path d="M1.5 8h13M8 1.5c2 2 2 11 0 13M8 1.5c-2 2-2 11 0 13" stroke="#0B7A48" stroke-width="1.4"></path></svg>
+            <span>{{ langCode }}</span>
+            <span style="font-size: 10px; color: #5C6A62">▾</span>
+          </button>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" style="position: absolute; right: 0; top: 46px; min-width: 210px; background: #FFFFFF; border: 1px solid #E6E4DC; border-radius: 16px; padding: 6px; box-shadow: 0 24px 48px -28px rgba(16,26,20,0.45); display: flex; flex-direction: column; gap: 2px; z-index: 50">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+                <button role="option" onClick="{{ l.pick }}" style="display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 12px; padding: 11px 12px; border: 0; border-radius: 10px; background: {{ l.bg }}; color: #101A14; font-family: inherit; text-align: left; cursor: pointer" style-hover="background: #F4F3ED">
+                  <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">{{ l.native }}</span><span style="font-size: 12.5px; color: #5C6A62">{{ l.en }}</span></span>
+                  <span style="color: #0B7A48; font-weight: 700">{{ l.check }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <a href="#login" style="font-size: 14.5px; color: #46564D">Log in</a>
+        <a href="#start" style="background: #101A14; color: #FAF9F5; padding: 11px 20px; border-radius: 99px; font-size: 14.5px; font-weight: 600">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" data-screen-label="Hero" style="padding: 72px 24px 88px; background: radial-gradient(120% 90% at 85% -10%, #E4F5EA 0%, rgba(228,245,234,0) 55%), linear-gradient(#FAF9F5, #F6F5F0)">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="display: flex; gap: 8px; font-size: 13.5px; color: #5C6A62; margin-bottom: 40px"><a href="Home Light Clients.dc.html" style="color: #5C6A62">Home</a><span>/</span><span>Extraordinary ability</span><span>/</span><span style="color: #101A14; font-weight: 600">EB-1A</span></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px; align-items: center">
+        <div>
+          <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #0B7A48; margin-bottom: 22px">EB-1A · EXTRAORDINARY ABILITY GREEN CARD</div>
+          <h1 style="font-size: clamp(40px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 24px; text-wrap: balance">A green card for the <em style="font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.01em">top</em> of your field.</h1>
+          <p style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #46564D; max-width: 54ch; margin: 0 0 34px">No employer, no job offer, no lottery. If your record shows sustained acclaim, you can petition for permanent residence yourself — and we help you build that record before anyone drafts a word.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px">
+            <a href="#evaluate" style="background: #22B26E; color: #06251A; padding: 15px 28px; border-radius: 99px; font-weight: 700; font-size: 15.5px">Check my EB-1A eligibility</a>
+            <a href="#requirements" style="border: 1px solid #C9CFC9; color: #101A14; padding: 15px 28px; border-radius: 99px; font-weight: 600; font-size: 15.5px">See the 10 criteria</a>
+          </div>
+          <div style="font-size: 14px; color: #5C6A62">Free · about four minutes · a written read of every criterion</div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E6E4DC; border-radius: 24px; padding: 30px; box-shadow: 0 30px 60px -40px rgba(16,26,20,0.45)">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px">
+            <div style="font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; color: #0B7A48">EB-1A AT A GLANCE</div>
+            <div style="font-weight: 600; font-size: 10.5px; letter-spacing: 0.08em; color: #0B7A48; border: 1px solid #A8E3C4; background: #EAF8F0; padding: 4px 8px; border-radius: 6px">SELF-PETITION</div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <div style="display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; padding: 15px 0; border-top: 1px solid #EDEBE4"><span style="color: #46564D; font-size: 15px">Employer sponsor</span><span style="font-weight: 700; font-size: 15px">Not required</span></div>
+            <div style="display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; padding: 15px 0; border-top: 1px solid #EDEBE4"><span style="color: #46564D; font-size: 15px">Labor certification (PERM)</span><span style="font-weight: 700; font-size: 15px">Not required</span></div>
+            <div style="display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; padding: 15px 0; border-top: 1px solid #EDEBE4"><span style="color: #46564D; font-size: 15px">Criteria to meet</span><span style="font-weight: 700; font-size: 15px">3 of 10, or one major award</span></div>
+            <div style="display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; padding: 15px 0; border-top: 1px solid #EDEBE4"><span style="color: #46564D; font-size: 15px">I-140 decision, premium</span><span style="font-weight: 700; font-size: 15px; color: #0B7A48">15 business days</span></div>
+            <div style="display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; padding: 15px 0; border-top: 1px solid #EDEBE4; border-bottom: 1px solid #EDEBE4"><span style="color: #46564D; font-size: 15px">Family included</span><span style="font-weight: 700; font-size: 15px">Spouse, children under 21</span></div>
+          </div>
+          <p style="font-size: 13px; line-height: 1.55; color: #5C6A62; margin: 18px 0 0">Premium processing speeds up the I-140 decision only. Green card timing still depends on the Visa Bulletin for your country of birth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" data-screen-label="Overview" style="padding: 104px 24px; background: #FFFFFF; border-top: 1px solid #E6E4DC; border-bottom: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 56px">
+      <div>
+        <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">OVERVIEW</div>
+        <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0">What the EB-1A <em style="font-family: 'Instrument Serif', serif; font-weight: 400">actually</em> is.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px; font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.65; color: #46564D">
+        <p style="margin: 0">The EB-1A is the first-preference employment green card for people with <strong style="color: #101A14">extraordinary ability</strong> in the sciences, arts, education, business or athletics. It's reserved for the small share of people who have risen to the very top of their field.</p>
+        <p style="margin: 0">Unlike most employment categories, you file it for yourself. There's no job offer to secure and no labor market test to pass — you only need to show that you'll keep working in your field once you're in the US.</p>
+        <p style="margin: 0">USCIS reviews it in two steps. First, does the evidence meet at least three of ten regulatory criteria? Then, taken as a whole, does it show sustained national or international acclaim? Most petitions are won or lost in the second step.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="who" data-screen-label="Who is it for" style="padding: 104px 24px; background: #FAF9F5">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">WHO IS IT FOR?</div>
+      <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px; max-width: 22ch">Built for people the field already <em style="font-family: 'Instrument Serif', serif; font-weight: 400">knows</em>.</h2>
+      <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 62ch; margin: 0 0 48px">Job titles don't qualify you — evidence does. These are the profiles we see approved most often.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <sc-for list="{{ profiles }}" as="p" hint-placeholder-count="6">
+          <div style="border: 1px solid #E6E4DC; border-radius: 20px; padding: 26px; background: #FFFFFF; display: flex; flex-direction: column; gap: 10px">
+            <div style="font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; color: #0B7A48">{{ p.n }}</div>
+            <h3 style="font-size: 20px; letter-spacing: -0.02em; font-weight: 700; margin: 0">{{ p.title }}</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #46564D; margin: 0">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top: 20px; background: #0E2B1E; color: #F2F7F3; border-radius: 20px; padding: 26px 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px">
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.55; max-width: 64ch; color: #BFD3C7"><strong style="color: #FFFFFF">Not quite there yet?</strong> That's where most people start. Frank maps the gap and works it with you until the record is ready.</p>
+        <a href="#frank" style="background: #7FE0AC; color: #06251A; padding: 13px 22px; border-radius: 99px; font-weight: 700; font-size: 15px">How Frank helps →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="frank" data-screen-label="How we help" style="padding: 104px 24px; background: #FFFFFF; border-top: 1px solid #E6E4DC; border-bottom: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #0B7A48; margin-bottom: 18px">HOW GREEN CARD GUIDE WILL HELP YOU</div>
+      <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px; max-width: 24ch">Software for the record. <em style="font-family: 'Instrument Serif', serif; font-weight: 400">Attorneys</em> for the petition.</h2>
+      <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 62ch; margin: 0 0 48px">Frank does the long, unglamorous work of building evidence. When the record is ready, our partner attorneys take it from strategy to approval.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 40px">
+        <sc-for list="{{ help }}" as="h" hint-placeholder-count="4">
+          <div style="border: 1px solid #E6E4DC; border-radius: 20px; padding: 26px; background: #FAF9F5; display: flex; flex-direction: column">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px">
+              <span style="font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; color: #0B7A48">{{ h.n }}</span>
+              <span style="font-weight: 600; font-size: 10px; letter-spacing: 0.1em; color: {{ h.whoColor }}; border: 1px solid {{ h.whoBorder }}; padding: 4px 8px; border-radius: 6px">{{ h.who }}</span>
+            </div>
+            <h3 style="font-size: 20px; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 10px">{{ h.title }}</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #46564D; margin: 0">{{ h.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+        <a href="#evaluate" style="background: #22B26E; color: #06251A; padding: 14px 26px; border-radius: 99px; font-weight: 700; font-size: 15.5px">Start free evaluation</a>
+        <a href="#pricing" style="border: 1px solid #C9CFC9; color: #101A14; padding: 14px 26px; border-radius: 99px; font-weight: 600; font-size: 15.5px">See EB-1A pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" data-screen-label="Why EB-1A" style="padding: 104px 24px; background: #FAF9F5">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">WHY CHOOSE EB-1A?</div>
+      <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px">The fastest route that's <em style="font-family: 'Instrument Serif', serif; font-weight: 400">yours</em>.</h2>
+      <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 62ch; margin: 0 0 44px">Your status stops depending on an employer, a lottery or a labor test. Here's how it compares with the routes most of our clients weigh it against.</p>
+      <div style="overflow-x: auto; border: 1px solid #E6E4DC; border-radius: 22px; background: #FFFFFF">
+        <div style="min-width: 760px">
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; background: #F4F3ED; border-bottom: 1px solid #E6E4DC">
+            <div style="padding: 18px 24px"></div>
+            <div style="padding: 18px 24px; background: #0E2B1E; color: #FFFFFF; font-weight: 800; font-size: 17px; letter-spacing: -0.02em">EB-1A</div>
+            <div style="padding: 18px 24px; font-weight: 700; font-size: 16px">EB-2 NIW</div>
+            <div style="padding: 18px 24px; font-weight: 700; font-size: 16px">EB-2 PERM</div>
+          </div>
+          <sc-for list="{{ compare }}" as="r" hint-placeholder-count="6">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-bottom: 1px solid #EDEBE4">
+              <div style="padding: 18px 24px; font-size: 15px; color: #46564D">{{ r.label }}</div>
+              <div style="padding: 18px 24px; font-size: 15px; font-weight: 700; color: #0B7A48; background: #EAF8F0">{{ r.a }}</div>
+              <div style="padding: 18px 24px; font-size: 15px">{{ r.b }}</div>
+              <div style="padding: 18px 24px; font-size: 15px">{{ r.c }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="font-size: 14px; color: #5C6A62; margin: 16px 0 0">General comparison only. Waits vary by country of birth and change monthly with the Visa Bulletin.</p>
+    </div>
+  </section>
+
+  <section id="timeline" data-screen-label="Timeline" style="padding: 104px 24px; background: #FFFFFF; border-top: 1px solid #E6E4DC; border-bottom: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 48px">
+        <div>
+          <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">EB-1A TIMELINE</div>
+          <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px">From first read to <em style="font-family: 'Instrument Serif', serif; font-weight: 400">green card</em>.</h2>
+          <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 56ch; margin: 0">Typical ranges for a US-based applicant adjusting status. Your record-building phase depends on where you start.</p>
+        </div>
+        <div style="display: flex; gap: 4px; padding: 4px; background: #F4F3ED; border: 1px solid #E6E4DC; border-radius: 99px">
+          <button onClick="{{ setPremium }}" style="border: 0; cursor: pointer; font-family: inherit; font-size: 14.5px; font-weight: 600; padding: 10px 18px; border-radius: 99px; background: {{ premBg }}; color: {{ premFg }}">Premium processing</button>
+          <button onClick="{{ setStandard }}" style="border: 0; cursor: pointer; font-family: inherit; font-size: 14.5px; font-weight: 600; padding: 10px 18px; border-radius: 99px; background: {{ stdBg }}; color: {{ stdFg }}">Standard</button>
+        </div>
+      </div>
+      <div style="position: relative">
+        <div style="position: absolute; left: 0; right: 0; top: 15px; height: 3px; border-radius: 99px; background: linear-gradient(90deg, #22B26E 0%, #22B26E 34%, #101A14 34%, #101A14 100%)"></div>
+        <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+            <div style="display: flex; flex-direction: column; gap: 14px">
+              <div style="width: 32px; height: 32px; border-radius: 99px; background: {{ s.dot }}; border: 1.5px solid #101A14; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: {{ s.dotFg }}">{{ s.i }}</div>
+              <div style="font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: {{ s.whoColor }}">{{ s.who }}</div>
+              <h3 style="font-size: 19px; letter-spacing: -0.02em; font-weight: 700; margin: 0">{{ s.title }}</h3>
+              <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: #0B7A48">{{ s.time }}</div>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #46564D; margin: 0">{{ s.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="requirements" data-screen-label="Requirements" style="padding: 104px 24px; background: #FAF9F5">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">EB-1A VISA REQUIREMENTS</div>
+      <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px">Meet three of <em style="font-family: 'Instrument Serif', serif; font-weight: 400">ten</em>.</h2>
+      <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 62ch; margin: 0 0 44px">Or show a one-time major, internationally recognised award — think Nobel, Oscar, Olympic medal. Select a criterion to see what evidence usually carries it.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 24px; align-items: start">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{ criteria }}" as="c" hint-placeholder-count="10">
+            <button onClick="{{ c.onPick }}" style="display: grid; grid-template-columns: 34px minmax(0,1fr) auto; align-items: center; gap: 14px; width: 100%; text-align: left; cursor: pointer; font-family: inherit; padding: 14px 18px; border-radius: 14px; border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: #101A14; transition: background 200ms ease, border-color 200ms ease">
+              <span style="font-size: 13px; font-weight: 700; color: {{ c.numColor }}">{{ c.n }}</span>
+              <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.01em">{{ c.title }}</span>
+              <span style="color: {{ c.numColor }}; font-size: 16px">→</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="position: sticky; top: 90px; background: #0E2B1E; color: #F2F7F3; border-radius: 22px; padding: 34px">
+          <div style="font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; color: #7FE0AC; margin-bottom: 16px">CRITERION {{ cur.n }} OF 10</div>
+          <h3 style="font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 16px">{{ cur.title }}</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #BFD3C7; margin: 0 0 26px">{{ cur.body }}</p>
+          <div style="font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #7FE0AC; padding-bottom: 12px; border-bottom: 1px solid #2C4F3E; margin-bottom: 14px">EVIDENCE THAT USUALLY WORKS</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px">
+            <sc-for list="{{ cur.ev }}" as="e" hint-placeholder-count="3">
+              <div style="display: flex; gap: 10px; font-size: 15px; line-height: 1.5"><span style="color: #7FE0AC">✓</span><span>{{ e }}</span></div>
+            </sc-for>
+          </div>
+          <div style="background: #143A29; border-radius: 14px; padding: 16px 18px; font-size: 14.5px; line-height: 1.55; color: #BFD3C7"><strong style="color: #FFFFFF">Frank's angle:</strong> {{ cur.frank }}</div>
+        </div>
+      </div>
+      <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+        <div style="border: 1px solid #E6E4DC; border-radius: 20px; padding: 24px; background: #FFFFFF">
+          <h3 style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px">Then, the final merits</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #46564D; margin: 0">Meeting three criteria gets you reviewed, not approved. The officer then weighs everything together for sustained acclaim.</p>
+        </div>
+        <div style="border: 1px solid #E6E4DC; border-radius: 20px; padding: 24px; background: #FFFFFF">
+          <h3 style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px">Continue in your field</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #46564D; margin: 0">You must intend to keep working in the area of your ability — shown with a statement, plans, contracts or offers.</p>
+        </div>
+        <div style="border: 1px solid #E6E4DC; border-radius: 20px; padding: 24px; background: #FFFFFF">
+          <h3 style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px">Comparable evidence</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #46564D; margin: 0">If a criterion doesn't fit your occupation, equivalent evidence may be offered in its place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showLawyers }}" hint-placeholder-val="{{ true }}">
+    <section id="lawyers" data-screen-label="Our lawyers" style="padding: 104px 24px; background: #FFFFFF; border-top: 1px solid #E6E4DC; border-bottom: 1px solid #E6E4DC">
+      <div style="max-width: 1240px; margin: 0 auto">
+        <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">OUR LAWYERS <span style="color: #22B26E">*</span></div>
+        <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px">One leads. A second <em style="font-family: 'Instrument Serif', serif; font-weight: 400">reviews</em>.</h2>
+        <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6; color: #46564D; max-width: 62ch; margin: 0 0 48px">Every EB-1A petition is drafted by a licensed attorney at our partner firm and checked by another before it's filed.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+          <div style="border: 1px solid #E6E4DC; border-radius: 22px; overflow: hidden; background: #FAF9F5">
+            <div style="height: 300px"><image-slot id="eb1a-lawyer-1" shape="rect" placeholder="Attorney headshot"></image-slot></div>
+            <div style="padding: 22px 24px 26px">
+              <div style="font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #0B7A48; margin-bottom: 8px">MANAGING ATTORNEY</div>
+              <h3 style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px">Attorney name</h3>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #46564D; margin: 0">EB-1A and O-1 strategy. Bar admission and years in practice.</p>
+            </div>
+          </div>
+          <div style="border: 1px solid #E6E4DC; border-radius: 22px; overflow: hidden; background: #FAF9F5">
+            <div style="height: 300px"><image-slot id="eb1a-lawyer-2" shape="rect" placeholder="Attorney headshot"></image-slot></div>
+            <div style="padding: 22px 24px 26px">
+              <div style="font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #0B7A48; margin-bottom: 8px">SENIOR ATTORNEY</div>
+              <h3 style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px">Attorney name</h3>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #46564D; margin: 0">Research and academic petitions. Bar admission and years in practice.</p>
+            </div>
+          </div>
+          <div style="border: 1px solid #E6E4DC; border-radius: 22px; overflow: hidden; background: #FAF9F5">
+            <div style="height: 300px"><image-slot id="eb1a-lawyer-3" shape="rect" placeholder="Attorney headshot"></image-slot></div>
+            <div style="padding: 22px 24px 26px">
+              <div style="font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #0B7A48; margin-bottom: 8px">RFE LEAD</div>
+              <h3 style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px">Attorney name</h3>
+              <p style="font-size: 14.5px; line-height: 1.55; color: #46564D; margin: 0">RFE and NOID responses. Bar admission and years in practice.</p>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: #5C6A62; margin: 20px 0 0"><span style="color: #22B26E">*</span> Legal services are provided by our independent partner law firm, not by Green Card Guide.</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="testimonials" data-screen-label="Testimonials" style="padding: 104px 24px; background: #FAF9F5">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">TESTIMONIALS</div>
+      <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 48px">In their <em style="font-family: 'Instrument Serif', serif; font-weight: 400">own</em> words.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+        <a href="Client Story.dc.html?c=b" style="grid-column: span 1; display: grid; grid-template-rows: 260px auto; border-radius: 22px; overflow: hidden; background: #0E2B1E; color: #F2F7F3" style-hover="color: #F2F7F3; box-shadow: 0 30px 60px -36px rgba(16,26,20,0.6)">
+          <img src="uploads/brooke-cagle-NoRsyXmHGpI-unsplash.jpg" alt="Elena V." style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block" />
+          <div style="padding: 26px">
+            <p style="font-size: 18px; line-height: 1.5; margin: 0 0 22px; letter-spacing: -0.01em">"Two years on Frank turned three thin criteria into six strong ones. The petition almost wrote itself."</p>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
+              <div><div style="font-weight: 700; font-size: 15px">Elena V.</div><div style="font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: #7FE0AC; margin-top: 4px">O-1A → EB-1A · RESEARCH</div></div>
+              <span style="font-size: 13.5px; font-weight: 700; color: #7FE0AC">Read story →</span>
+            </div>
+          </div>
+        </a>
+        <div style="border: 1px solid #E6E4DC; border-radius: 22px; background: #FFFFFF; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px">
+          <div style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 64px; line-height: 0.6; color: #22B26E">“</div>
+          <p style="font-size: 19px; line-height: 1.5; margin: 0; letter-spacing: -0.01em">"I'd been told I wasn't ready. Frank showed me exactly which two criteria to work on, and a year later we filed. Approved in premium."</p>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EDEBE4; padding-top: 18px">
+            <div style="width: 42px; height: 42px; border-radius: 99px; background: #EAF8F0; border: 1px solid #A8E3C4; color: #0B7A48; font-weight: 700; display: flex; align-items: center; justify-content: center">RK</div>
+            <div><div style="font-weight: 700; font-size: 15px">Client name</div><div style="font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: #0B7A48; margin-top: 4px">EB-1A · FOUNDER</div></div>
+          </div>
+        </div>
+        <div style="border: 1px solid #E6E4DC; border-radius: 22px; background: #FFFFFF; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px">
+          <div style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 64px; line-height: 0.6; color: #22B26E">“</div>
+          <p style="font-size: 19px; line-height: 1.5; margin: 0; letter-spacing: -0.01em">"The RFE felt like the end. The attorneys answered it point by point, and the approval came six weeks later."</p>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #EDEBE4; padding-top: 18px">
+            <div style="width: 42px; height: 42px; border-radius: 99px; background: #FDF5E4; border: 1px solid #F0D9A6; color: #9A6408; font-weight: 700; display: flex; align-items: center; justify-content: center">AM</div>
+            <div><div style="font-weight: 700; font-size: 15px">Client name</div><div style="font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: #9A6408; margin-top: 4px">EB-1A · RFE OVERCOME</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" data-screen-label="FAQ" style="padding: 104px 24px; background: #FFFFFF; border-top: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+      <div style="flex: 1 1 300px; min-width: 0">
+        <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #5C6A62; margin-bottom: 18px">FAQ</div>
+        <h2 style="font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.032em; font-weight: 800; margin: 0 0 20px">Questions we <em style="font-family: 'Instrument Serif', serif; font-weight: 400">always</em> get.</h2>
+        <p style="font-size: 16.5px; line-height: 1.6; color: #46564D; margin: 0 0 26px; max-width: 40ch">Something specific to your case? The free evaluation is the fastest way to a real answer.</p>
+        <a href="#evaluate" style="display: inline-block; background: #22B26E; color: #06251A; padding: 13px 24px; border-radius: 99px; font-weight: 700; font-size: 15px">Start free evaluation</a>
+      </div>
+      <div style="flex: 2 1 480px; min-width: 0; border-top: 1px solid #E6E4DC">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+          <div style="border-bottom: 1px solid #E6E4DC">
+            <button onClick="{{ f.toggle }}" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; background: none; border: 0; cursor: pointer; font-family: inherit; text-align: left; color: #101A14">
+              <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.015em">{{ f.q }}</span>
+              <span style="flex: 0 0 auto; width: 30px; height: 30px; border-radius: 99px; border: 1px solid {{ f.iconBorder }}; background: {{ f.iconBg }}; color: #0B7A48; display: flex; align-items: center; justify-content: center; font-size: 18px">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size: 16px; line-height: 1.65; color: #46564D; margin: -4px 0 24px; max-width: 70ch">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" style="padding: 120px 24px; background: #0E2B1E; color: #F2F7F3; text-align: center">
+    <div style="max-width: 760px; margin: 0 auto">
+      <div style="font-weight: 600; font-size: 12.5px; letter-spacing: 0.14em; color: #7FE0AC; margin-bottom: 22px">EB-1A · GET STARTED</div>
+      <h2 style="font-size: clamp(34px, 5vw, 62px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 20px">See where your record <em style="font-family: 'Instrument Serif', serif; font-weight: 400">stands</em>.</h2>
+      <p style="font-size: clamp(16px, 1.5vw, 20px); line-height: 1.55; color: #BFD3C7; margin: 0 0 40px">Upload a CV. In about four minutes you'll have a criterion-by-criterion read and a written list of what's missing.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center">
+        <a href="#evaluate" style="background: #7FE0AC; color: #06251A; padding: 15px 30px; border-radius: 99px; font-weight: 700; font-size: 16px">Start free evaluation</a>
+        <a href="#lawyers" style="border: 1px solid #3E6553; color: #F2F7F3; padding: 15px 30px; border-radius: 99px; font-weight: 600; font-size: 16px">Talk to an attorney</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 56px 24px 48px; background: #FAF9F5; border-top: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 28px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="#0B7A48" stroke-width="2.6"></circle><path d="M22 2a8 8 0 100 16" stroke="#22B26E" stroke-width="2.6" stroke-linecap="round"></path></svg>
+          <span style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em">Green Card Guide</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 22px; font-size: 15px">
+          <a href="#eb1b" style="color: #46564D">EB-1B</a><a href="#o1" style="color: #46564D">O-1A / O-1B</a><a href="#niw" style="color: #46564D">EB-2 NIW</a><a href="#pricing" style="color: #46564D">Pricing</a><a href="#contact" style="color: #46564D">Contact</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 14px">
+          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+            <button onClick="{{ l.pick }}" style="border: 1px solid {{ l.footBorder }}; background: {{ l.footBg }}; color: #101A14; font-family: inherit; font-size: 14px; font-weight: 600; padding: 7px 12px; border-radius: 99px; cursor: pointer">{{ l.native }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <p style="border-top: 1px solid #E6E4DC; padding-top: 28px; font-size: 13.5px; line-height: 1.7; color: #5C6A62; margin: 0; max-width: 100ch"><strong style="color: #46564D">Green Card Guide is not a law firm and does not provide legal advice.</strong> Nothing on this page, including any evaluation, timeline or score, is legal advice or a determination of eligibility. Processing times are estimates and change frequently; check uscis.gov and the Visa Bulletin for current figures.</p>
+    </div>
+  </footer>
+</div>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E2B1E"></rect><circle cx="40" cy="50" r="17" fill="none" stroke="#7FE0AC" stroke-width="5"></circle><path d="M66 33a17 17 0 100 34" fill="none" stroke="#22B26E" stroke-width="5" stroke-linecap="round"></path></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;processing&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;premium&quot;,&quot;standard&quot;],&quot;default&quot;:&quot;premium&quot;,&quot;tsType&quot;:&quot;\&quot;premium\&quot; | \&quot;standard\&quot;&quot;,&quot;section&quot;:&quot;Timeline&quot;},&quot;showLawyers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { crit: 0, faq: 0, speed: null, lang: (typeof localStorage !== "undefined" && localStorage.getItem("gcg-lang")) || "en", langOpen: false };
+  componentDidMount() {
+    this._close = e => { if (this.state.langOpen && !e.target.closest('[aria-label="Change language"], [role="listbox"]')) this.setState({ langOpen: false }); };
+    document.addEventListener("click", this._close);
+  }
+  componentWillUnmount() { document.removeEventListener("click", this._close); }
+  pickLang(code) { try { localStorage.setItem("gcg-lang", code); } catch (e) {} this.setState({ lang: code, langOpen: false }); }
+
+  renderVals() {
+    const speed = this.state.speed ?? this.props.processing ?? "premium";
+    const prem = speed === "premium";
+
+    const profiles = [
+      ["Researchers & scientists", "Publications, citations, peer review and grants that show your work moved the field."],
+      ["Founders & executives", "Companies with traction, press, funding and a leading role others can verify."],
+      ["Engineers & technologists", "Patents, open-source impact, conference talks and systems used at scale."],
+      ["Artists & performers", "Exhibitions, festivals, reviews and box office or streaming numbers."],
+      ["Athletes & coaches", "International competition results, rankings and national-team selection."],
+      ["Physicians & clinicians", "Original clinical research, society leadership and invited lectures."]
+    ].map((p, i) => ({ n: "0" + (i + 1), title: p[0], body: p[1] }));
+
+    const help = [
+      ["01", "FRANK", "Read the record", "Your CV scored against all ten criteria, with a plain-language note on each."],
+      ["02", "FRANK", "Close the gaps", "Judging panels, speaking slots, journals and press matched to the criteria you're missing."],
+      ["03", "ATTORNEYS", "Build the petition", "Strategy, recommendation letters and a cover brief written for the final merits review."],
+      ["04", "ATTORNEYS", "File and follow through", "I-140, I-485 or consular processing, and RFE responses included."]
+    ].map(h => ({ n: "STEP " + h[0], who: h[1], title: h[2], body: h[3],
+      whoColor: h[1] === "FRANK" ? "#0B7A48" : "#5C6A62",
+      whoBorder: h[1] === "FRANK" ? "#A8E3C4" : "#D9D6CC" }));
+
+    const compare = [
+      ["Employer sponsor", "Not needed", "Not needed", "Required"],
+      ["Labor certification", "Not needed", "Waived", "Required"],
+      ["Evidence bar", "Top of the field", "Work of national importance", "Advanced degree + job offer"],
+      ["Premium processing", "Yes · 15 business days", "Yes · 45 business days", "Yes, after PERM"],
+      ["Visa queue", "EB-1 · shortest", "EB-2 · longer", "EB-2 · longer"],
+      ["Change jobs freely", "Yes", "Yes", "Restricted until filed"]
+    ].map(r => ({ label: r[0], a: r[1], b: r[2], c: r[3] }));
+
+    const steps = [
+      ["FRANK", "Free evaluation", "4 minutes", "4 minutes", "Upload a CV and get a read on every criterion."],
+      ["FRANK", "Build the record", "3–18 months", "3–18 months", "Only if needed. Earn and file the missing evidence."],
+      ["ATTORNEYS", "Draft the petition", "4–8 weeks", "4–8 weeks", "Strategy, letters, exhibits, second-attorney review."],
+      ["USCIS", "I-140 decision", "15 business days", "6–12 months", "Approval, or an RFE we answer for you."],
+      ["USCIS", "Adjustment of status", "8–14 months", "8–14 months", "I-485 with work and travel permits along the way."],
+      ["DONE", "Green card", "10 years", "10 years", "Permanent residence for you and your family."]
+    ].map((s, i) => ({ i: i + 1, who: s[0], title: s[1], time: prem ? s[2] : s[3], body: s[4],
+      dot: i < 2 ? "#22B26E" : i === 5 ? "#101A14" : "#FAF9F5",
+      dotFg: i === 5 ? "#FFFFFF" : "#101A14",
+      whoColor: s[0] === "FRANK" ? "#0B7A48" : "#5C6A62" }));
+
+    const crits = [
+      ["Awards and prizes", "Lesser nationally or internationally recognised prizes or awards for excellence in your field.", ["Award certificates with selection criteria", "Number of entrants and winners", "Coverage of the award itself"], "we find awards you're eligible for and time your entries."],
+      ["Membership in associations", "Membership in associations that require outstanding achievement, judged by recognised experts.", ["Bylaws showing selective admission", "Your acceptance letter", "Who sits on the admissions panel"], "we separate truly selective bodies from paid-membership ones."],
+      ["Published material about you", "Articles about you and your work in professional or major trade publications or major media.", ["Full articles with author and date", "Circulation or readership figures", "Translations where needed"], "a press plan built around work you've already done."],
+      ["Judging the work of others", "Serving as a judge of others' work, individually or on a panel, in your field.", ["Invitations to peer review or judge", "Confirmation you completed it", "Standing of the venue"], "we match you with panels, program committees and reviewer pools."],
+      ["Original contributions", "Original scientific, scholarly, artistic, athletic or business contributions of major significance.", ["Independent expert letters", "Adoption by others, licences, products", "Citation or usage data"], "we trace where your work was used and who can speak to it."],
+      ["Scholarly articles", "Authorship of scholarly articles in professional journals or other major media.", ["Published articles", "Journal impact and reach", "Citation counts"], "we suggest venues that fit your field and timeline."],
+      ["Exhibitions or showcases", "Display of your work at artistic exhibitions or showcases.", ["Programs and catalogues", "Curatorial selection process", "Reviews of the show"], "we log every showing as evidence as it happens."],
+      ["Leading or critical role", "A leading or critical role for organisations with a distinguished reputation.", ["Org charts and role letters", "Evidence of the organisation's standing", "Outcomes tied to your role"], "we help you document the role, not just the title."],
+      ["High salary", "A high salary or other significantly high remuneration compared with others in your field.", ["Pay slips, contracts, tax returns", "Salary survey data for your role and region", "Equity valuations where relevant"], "we benchmark your pay against the right comparison data."],
+      ["Commercial success", "Commercial success in the performing arts, shown by sales or receipts.", ["Box office, streaming or sales figures", "Chart positions", "Distributor statements"], "we pull the numbers into exhibit-ready form."]
+    ];
+    const ci = this.state.crit;
+    const criteria = crits.map((c, i) => ({ n: String(i + 1).padStart(2, "0"), title: c[0],
+      bg: i === ci ? "#FFFFFF" : "#F4F3ED", border: i === ci ? "#22B26E" : "#EAE8E0",
+      numColor: i === ci ? "#0B7A48" : "#A3A89F",
+      onPick: () => this.setState({ crit: i }) }));
+    const cc = crits[ci];
+    const cur = { n: String(ci + 1).padStart(2, "0"), title: cc[0], body: cc[1], ev: cc[2], frank: cc[3] };
+
+    const faqList = [
+      ["Do I need a job offer or employer?", "No. You can file the EB-1A yourself. You only need to show you'll continue working in your field in the US."],
+      ["How many criteria do I really need?", "The regulation asks for three of ten. In practice, stronger petitions show four or five, because the officer then weighs everything together for sustained acclaim."],
+      ["Can I file while I'm outside the US?", "Yes. You'd complete the process through consular processing at a US embassy or consulate instead of adjusting status."],
+      ["Can I file EB-1A and EB-2 NIW at the same time?", "Yes. Many clients file both to hedge. They're separate petitions with separate fees."],
+      ["Does my family get green cards too?", "Your spouse and unmarried children under 21 can receive green cards as derivatives."],
+      ["What happens if I get an RFE?", "A Request for Evidence isn't a denial. Our attorneys draft the response, and it's included in the filing fee."],
+      ["How much does it cost?", "A free evaluation, an optional Frank plan while you build the record, then a flat attorney fee quoted up front. USCIS filing fees are separate."]
+    ];
+    const faqs = faqList.map((f, i) => {
+      const open = this.state.faq === i;
+      return { q: f[0], a: f[1], open, icon: open ? "−" : "+",
+        iconBg: open ? "#EAF8F0" : "#FFFFFF", iconBorder: open ? "#A8E3C4" : "#D9D6CC",
+        toggle: () => this.setState({ faq: open ? -1 : i }) };
+    });
+
+    const L = [["en", "EN", "English", "English"], ["es", "ES", "Español", "Spanish"], ["fr", "FR", "Français", "French"], ["zh", "中文", "中文（普通话）", "Chinese (Mandarin)"]];
+    const lang = this.state.lang;
+    const langs = L.map(l => ({ native: l[2], en: l[3], check: l[0] === lang ? "✓" : "",
+      bg: l[0] === lang ? "#EAF8F0" : "transparent",
+      footBg: l[0] === lang ? "#EAF8F0" : "transparent", footBorder: l[0] === lang ? "#A8E3C4" : "#D9D6CC",
+      pick: () => this.pickLang(l[0]) }));
+    return {
+      langs, langCode: (L.find(l => l[0] === lang) || L[0])[1], langOpen: this.state.langOpen,
+      toggleLang: () => this.setState(s => ({ langOpen: !s.langOpen })),
+      profiles, help, compare, steps, criteria, cur, faqs,
+      showLawyers: this.props.showLawyers ?? true,
+      setPremium: () => this.setState({ speed: "premium" }),
+      setStandard: () => this.setState({ speed: "standard" }),
+      premBg: prem ? "#101A14" : "transparent", premFg: prem ? "#FFFFFF" : "#46564D",
+      stdBg: prem ? "transparent" : "#101A14", stdFg: prem ? "#46564D" : "#FFFFFF"
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAF9F5; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #0B7A48; text-decoration: none; }
+  a:hover { color: #064F2F; }
+</style>
+</helmet>
+<div style="font-family: 'Schibsted Grotesk', system-ui, sans-serif; color: #101A14; background: #FAF9F5; overflow-x: hidden">
+
+  <header style="position: sticky; top: 0; z-index: 40; background: rgba(250,249,245,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid #E6E4DC">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px">
+      <a href="Home Light Clients.dc.html" style="display: flex; align-items: center; gap: 10px; color: #101A14">
+        <svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="#0B7A48" stroke-width="2.6"></circle><path d="M22 2a8 8 0 100 16" stroke="#22B26E" stroke-width="2.6" stroke-linecap="round"></path></svg>
+        <span style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em">Green Card Guide</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 22px; flex: 1; flex-wrap: wrap; font-size: 14.5px; color: #46564D">
+        <a href="Home Light Clients.dc.html#business" style="color: #46564D">For Businesses</a>
+        <a href="Home Light Clients.dc.html#individuals" style="color: #46564D">For Individuals</a>
+        <a href="Home Light Clients.dc.html#frank" style="display: flex; align-items: center; gap: 7px; color: #0B7A48; font-weight: 600"><span style="width: 6px; height: 6px; border-radius: 99px; background: #22B26E"></span>Frank</a>
+        <a href="Home Light Clients.dc.html#attorneys" style="color: #46564D">Our Attorneys <span style="color: #22B26E">*</span></a>
+        <a href="Home Light Clients.dc.html#pricing" style="color: #46564D">Pricing</a>
+        <a href="Home Light Clients.dc.html#resources" style="color: #46564D">Resources</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px">
+        <a href="#login" style="font-size: 14.5px; color: #46564D">Log in</a>
+        <a href="#start" style="background: #101A14; color: #FAF9F5; padding: 11px 20px; border-radius: 99px; font-size: 14.5px; font-weight: 600">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding: 40px 24px 0; background: linear-gradient(#FAF9F5, #F6F5F0)">
+    <div style="max-width: 1080px; margin: 0 auto">
+      <a href="Home Light Clients.dc.html#top" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #46564D; margin-bottom: 34px">← All client stories</a>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start">
+        <div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.14em; color: #0B7A48; margin-bottom: 18px">{{ story.route }}</div>
+          <h1 style="font-size: clamp(38px, 5vw, 62px); line-height: 1.0; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 14px">{{ story.name }}</h1>
+          <div style="font-size: 16.5px; color: #5C6A62; margin-bottom: 28px">{{ story.role }}</div>
+          <p style="font-family: 'Instrument Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; color: #101A14; margin: 0">“{{ story.quote }}”</p>
+        </div>
+        <div style="border-radius: 24px; overflow: hidden; border: 1px solid #E6E4DC; box-shadow: 0 34px 70px -40px rgba(16,26,20,0.5); background: #EDEBE4">
+          <img src="{{ story.photo }}" alt="{{ story.name }}" style="width: 100%; height: 100%; max-height: 520px; object-fit: cover; display: block" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 72px 24px 64px; background: #FFFFFF; border-top: 1px solid #E6E4DC; border-bottom: 1px solid #E6E4DC; margin-top: 64px">
+    <div style="max-width: 1080px; margin: 0 auto">
+      <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.14em; color: #0B7A48; margin-bottom: 40px">HOW THE CASE RAN</div>
+      <div style="display: flex; flex-direction: column; gap: 34px">
+        <sc-for list="{{ story.beats }}" as="beat" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 28px; align-items: start; border-top: 1px solid #EDEBE4; padding-top: 28px">
+            <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em; color: #0B7A48; padding-top: 5px">{{ beat.when }}</div>
+            <div style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #46564D; max-width: 62ch; text-wrap: pretty">{{ beat.what }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 56px; background: #0E2B1E; color: #F2F7F3; border-radius: 22px; padding: 34px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+        <div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #7FE0AC; margin-bottom: 12px">OUTCOME</div>
+          <div style="font-size: clamp(19px, 2vw, 25px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 800; max-width: 44ch">{{ story.outcome }}</div>
+        </div>
+        <a href="Home Light Clients.dc.html#evaluate" style="background: #22B26E; color: #06251A; padding: 14px 26px; border-radius: 99px; font-weight: 700; font-size: 15.5px">Start free evaluation →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 56px 24px 104px">
+    <div style="max-width: 1080px; margin: 0 auto">
+      <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 0.14em; color: #46564D; margin-bottom: 26px">MORE STORIES</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+        <sc-for list="{{ others }}" as="other" hint-placeholder-count="2">
+          <a href="{{ other.href }}" style="display: flex; gap: 16px; align-items: center; background: #FFFFFF; border: 1px solid #E6E4DC; border-radius: 18px; padding: 16px; color: #101A14" style-hover="border-color: #A8E3C4; box-shadow: 0 22px 44px -32px rgba(16,26,20,0.4)">
+            <img src="{{ other.photo }}" alt="{{ other.name }}" style="width: 68px; height: 78px; border-radius: 12px; object-fit: cover; display: block; flex: 0 0 auto" />
+            <div>
+              <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.14em; color: #0B7A48; margin-bottom: 6px">{{ other.route }}</div>
+              <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em">{{ other.name }}</div>
+              <div style="font-size: 12.5px; color: #5C6A62; margin-top: 3px">Read the story →</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <div style="font-size: 12px; color: #6B7871; margin-top: 30px">Illustrative composite cases. Details changed to protect client privacy.</div>
+    </div>
+  </section>
+
+  <footer style="background: #101A14; color: #C8D3CC; padding: 40px 24px">
+    <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; font-size: 13.5px">
+      <span>Green Card Guide — guided immigration, done right.</span>
+      <a href="Home Light Clients.dc.html#top" style="color: #7FE0AC">Back to home →</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;client&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;],&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Story&quot;}}">
+const STORIES = {
+  a: {
+    photo: "uploads/candice-picard-vLENm-coX5Y-unsplash.jpg",
+    name: "Klara & Jonas W.",
+    role: "Clinical researcher and spouse · Leipzig → Boston",
+    route: "EB-2 NIW + DERIVATIVE · APPROVED",
+    beats: [
+      { when: "YEAR 1", what: "They came to us three years before Klara was fileable. Frank read her profile and named the gap in a sentence: the citations existed, the independent recognition didn't." },
+      { when: "YEARS 1–3", what: "A plan she actually worked — two review invitations, a grant listing, a conference panel. Frank tracked every item as evidence, not as a to-do list, while Jonas's status stayed inside the same case." },
+      { when: "FILING", what: "Attorneys drafted from a record that was already built. One petition, one derivative, assembled in six weeks rather than six months of scrambling for letters." }
+    ],
+    quote: "Nobody else wanted to talk to us until she was ready to file. Green Card Guide started the year we asked the question.",
+    outcome: "Approved without an RFE · both green cards issued · naturalisation dates already in the calendar."
+  },
+  b: {
+    photo: "uploads/brooke-cagle-NoRsyXmHGpI-unsplash.jpg",
+    name: "Elena V.",
+    role: "Founder, logistics software · Bucharest → Austin",
+    route: "O-1A → EB-1A · APPROVED",
+    beats: [
+      { when: "START", what: "A first-time founder with real traction but no press, no awards and no judging record. On paper, not a case yet." },
+      { when: "BRIDGE", what: "O-1A first, to get her working legally in the US — structured so every year of it counted toward the EB-1A record instead of running in parallel to it." },
+      { when: "TWO YEARS LATER", what: "Same account, same attorneys, same evidence file. The EB-1A petition was a continuation of work already done, not a restart." }
+    ],
+    quote: "They planned the visa I needed now around the green card I wanted later. That's the whole difference.",
+    outcome: "O-1A approved in 2023 · EB-1A approved in 2025 · company now 24 people."
+  },
+  c: {
+    photo: "uploads/pexels-gustavo-fring-4173243.jpg",
+    name: "Sofia M.",
+    role: "University researcher · São Paulo → Chicago",
+    route: "EB-1B · CONSULAR · APPROVED",
+    beats: [
+      { when: "THE ASK", what: "An outstanding-researcher case with a complication: she was abroad, so approval was only half the work — the consulate was the other half." },
+      { when: "RUN", what: "One case board holding both clocks, petition milestones and the interview file, instead of two firms and a guess about when she could travel." },
+      { when: "AFTER", what: "The relationship didn't end at the visa. Green card issued, then naturalisation dates already in the calendar." }
+    ],
+    quote: "I flew for the interview knowing exactly what was in the file. Nobody had to reassure me.",
+    outcome: "EB-1B approved · consular interview cleared on the first appointment."
+  }
+};
+
+class Component extends DCLogic {
+  state = { key: null };
+
+  componentDidMount() {
+    const read = () => {
+      const q = new URLSearchParams(location.search).get("c");
+      const h = (location.hash || "").replace("#", "");
+      const k = q || h;
+      this.setState({ key: STORIES[k] ? k : "a" });
+    };
+    read();
+    this._onHash = read;
+    window.addEventListener("hashchange", this._onHash);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("hashchange", this._onHash);
+  }
+
+  renderVals() {
+    const key = this.state.key || this.props.client || "a";
+    const story = STORIES[key] || STORIES.a;
+    const others = Object.keys(STORIES).filter(k => k !== key).map(k => ({
+      href: "Client Story.dc.html?c=" + k,
+      photo: STORIES[k].photo,
+      name: STORIES[k].name,
+      route: STORIES[k].route
+    }));
+    return { story, others };
+  }
+}
+</script>
+</body>
+</html>
